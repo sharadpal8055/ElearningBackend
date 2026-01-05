@@ -33,8 +33,8 @@ export const signup = asyncHandler(async (req, res) => {
   res
     .cookie("token", token, {
   httpOnly: true,
-  secure: process.env.NODE_ENV === "production",
-  sameSite: "lax" 
+  secure: true,
+  sameSite: "none" 
 })
 
     .status(201)
@@ -78,8 +78,8 @@ export const login = asyncHandler(async (req, res) => {
   res
     .cookie("token", token, {
   httpOnly: true,
-  secure: process.env.NODE_ENV === "production",
-  sameSite: "lax" 
+  secure: true,
+  sameSite: "none" 
 })
 
     .status(200)
@@ -122,8 +122,8 @@ export const logout = asyncHandler(async (req, res) => {
     .cookie("token", "", {
       httpOnly: true,
       expires: new Date(0),
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "lax"
+      secure: true,
+      sameSite: "none"
     })
     .status(200)
     .json({
